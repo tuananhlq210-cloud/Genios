@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Media Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-indigo-600">MediaHub</h1>
+            <ul class="flex space-x-6 font-medium" id="category-menu">
+                <li><a href="#" class="hover:text-indigo-600 transition">Trang chủ</a></li>
+                </ul>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-20 px-4 text-center fade-in">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Sáng tạo không giới hạn</h2>
+        <p class="text-lg opacity-90 max-w-2xl mx-auto">Nền tảng chia sẻ Video, Âm nhạc và Media chất lượng cao dành cho cộng đồng sáng tạo chuyên nghiệp.</p>
+        <button onclick="scrollToUpload()" class="mt-8 bg-white text-indigo-700 px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition">Bắt đầu ngay</button>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <section id="upload-section" class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-2xl font-bold mb-6">Đăng tải nội dung mới</h3>
+                <form id="media-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">Tiêu đề</label>
+                        <input type="text" id="title" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Nhập tên nội dung..." required>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">Loại nội dung</label>
+                            <select id="media-type" class="w-full p-3 border rounded-lg outline-none">
+                                <option value="Video">Video</option>
+                                <option value="Nhạc">Âm nhạc</option>
+                                <option value="Clip">Clip ngắn</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">Ảnh Thumbnail</label>
+                            <input type="file" accept="image/*" class="w-full text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">File Media</label>
+                        <input type="file" id="media-file" class="w-full p-2 border border-dashed rounded-lg bg-gray-50" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">Mô tả</label>
+                        <textarea id="desc" rows="3" class="w-full p-3 border rounded-lg outline-none" placeholder="Viết gì đó về nội dung này..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition">Tải lên hệ thống</button>
+                </form>
+            </section>
+
+            <aside class="space-y-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold mb-4">Quản lý danh mục</h3>
+                    <div id="category-admin" class="space-y-2">
+                        </div>
+                </div>
+
+                <div class="bg-indigo-50 p-6 rounded-2xl text-center border border-indigo-100">
+                    <h3 class="font-bold mb-2">Truy cập nhanh</h3>
+                    <p class="text-xs text-gray-500 mb-4">Quét mã để truy cập web trên điện thoại</p>
+                    <div id="qrcode" class="flex justify-center mb-4"></div>
+                    <button onclick="downloadQR()" class="text-sm text-indigo-600 font-semibold underline">Tải mã QR về máy</button>
+                </div>
+            </aside>
+
+        </div>
+
+        <section class="mt-16">
+            <h3 class="text-2xl font-bold mb-8">Nội dung mới nhất</h3>
+            <div id="media-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t py-10 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Modern Media Hub. Built with Heart.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
